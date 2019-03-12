@@ -1,0 +1,32 @@
+{
+  "name": "shapes-test",
+  "version": "1.0.0",
+  "description": "JS assignment",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matiasbenedetto/shapes-test.git"
+  },
+  "keywords": [
+    "Shapes",
+    "Canvas"
+  ],
+  "author": "Matias Benedetto",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matiasbenedetto/shapes-test/issues"
+  },
+  "homepage": "https://github.com/matiasbenedetto/shapes-test#readme",
+  "dependencies": {
+    "next": "^8.0.3",
+    "processing": "^0.2.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  }
+}
