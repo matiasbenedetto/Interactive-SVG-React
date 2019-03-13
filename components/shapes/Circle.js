@@ -21,19 +21,19 @@ export default class Circle extends React.Component{
 
     handleMouseDown(event){
         event.stopPropagation();
-        console.log("mouse down");
+        //console.log("mouse down");
         this.setState({ isDragging: true, fill: "yellow" });
     }
 
     handleMouseUp(event){
         event.stopPropagation();
-        console.log("mouse up");
+        //console.log("mouse up");
         this.setState({ isDragging: false, fill: this.props.fill });
     }
 
     handleMouseMove(event){
         event.stopPropagation();
-        console.log("mouse move");
+        //console.log("mouse move");
         if ( this.state.isDragging ){
             this.setState({ x: event.pageX, y: event.pageY });
         }
@@ -42,14 +42,14 @@ export default class Circle extends React.Component{
     render(){
         let { x, y, size, fill } = this.state;
         x = x - size / 2;
-        console.log(size);
+        //console.log(size);
         y = y - size / 2;
         return(
             <circle
                 cx={ x }
                 cy={ y }
                 r={ size }
-                fill={ fill }
+                { ...this.props }
                 draggable="true"
                 onClick={ this.handleClick }
                 onMouseDown={ this.handleMouseDown }

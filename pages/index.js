@@ -7,7 +7,6 @@ export default class Index extends React.Component{
       <div>
         <div className="paper">
           <Paper>
-            <Circle/>
           </Paper> 
         </div>
       </div>
