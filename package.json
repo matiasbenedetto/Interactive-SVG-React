@@ -25,7 +25,6 @@
   "homepage": "https://github.com/matiasbenedetto/shapes-test#readme",
   "dependencies": {
     "next": "^8.0.3",
-    "processing": "^0.2.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   }
