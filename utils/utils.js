@@ -27,6 +27,5 @@ export function getParallelogramLastPointCoords( points ){
 
 export function getRadiusFromArea ( area ){
     const radius = Math.sqrt( area / Math.PI );
-    console.log(radius);
     return radius;
 }

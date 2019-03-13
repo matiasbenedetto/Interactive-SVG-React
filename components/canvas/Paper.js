@@ -1,6 +1,7 @@
 import Circle from '../shapes/Circle';
 import Parallelogram from '../shapes/Parallelogram';
 import { addPoint } from '../../utils/utils';
+import uuidv4 from  'uuid/v4';
 
 export default class Paper extends React.Component{
 
@@ -41,7 +42,7 @@ export default class Paper extends React.Component{
                     }
                 `}</style>
                 { points.map( group => (
-                    <Parallelogram points={ group } />
+                    <Parallelogram points={ group } key={uuidv4()} />
                 ) ) }                
             </svg>
         )

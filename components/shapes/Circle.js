@@ -21,20 +21,21 @@ export default class Circle extends React.Component{
 
     handleMouseDown(event){
         event.stopPropagation();
-        //console.log("mouse down");
+        console.log("mouse down");
         this.setState({ isDragging: true, fill: "yellow" });
     }
 
     handleMouseUp(event){
         event.stopPropagation();
-        //console.log("mouse up");
+        console.log("mouse up");
         this.setState({ isDragging: false, fill: this.props.fill });
     }
 
     handleMouseMove(event){
         event.stopPropagation();
-        //console.log("mouse move");
+        console.log("mouse move");
         if ( this.state.isDragging ){
+            this.props.updatePoint( { x: this.state.x, y: this.state.y }, { x: event.pageX, y: event.pageY } );
             this.setState({ x: event.pageX, y: event.pageY });
         }
     }

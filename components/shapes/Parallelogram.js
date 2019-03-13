@@ -1,5 +1,6 @@
 import Circle from './Circle';
 import { getRadiusFromArea } from '../../utils/utils';
+import uuidv4 from  'uuid/v4';
 
 export default class Parallelogram extends React.Component {
     constructor(props) {
@@ -7,6 +8,7 @@ export default class Parallelogram extends React.Component {
         this.state = {
             points: this.props.points
         }
+        this.updatePoint = this.updatePoint.bind( this );
     }
 
     getPolygonCoordsString( points ){
@@ -36,31 +38,40 @@ export default class Parallelogram extends React.Component {
     }
 
     getArea( points ){
-        console.log(points);
         if ( points.length === 4 ){ 
             const b = Math.abs( points[0].x - points[2].x ); 
-            console.log("b ", b);
             const h = Math.abs( points[0].y - points[2].y );
-            console.log("h ", h);
-            console.log( "Area: ",  b * h );
             return b * h;
         }else{
             return undefined;
         }
     }
 
-    
+    updatePoint( lastPoint, newPoint ){
+        const newPoints = this.state.points.map( point => {
+            if ( point.x === lastPoint.x  &&  point.y === lastPoint.y ){
+                point.x = newPoint.x;
+                point.y = newPoint.y;
+            } 
+            return point;
+        } );
+
+        console.log( "newPoints: ", newPoints );
+
+        this.setState({
+            points: newPoints 
+        })
+    }    
 
     render(){
         const { points } = this.state;
         const coords = this.getPolygonCoordsString( points );
         const centeredCircle = this.getCenteredCircle( points );
-        console.log ( this.getArea( points ) );
         return(
             <React.Fragment>
                 <polygon points={ coords } fill="transparent" stroke="blue" /> 
                 { points.map( point => (
-                    point.print && <Circle {...point} />
+                    point.print && <Circle {...point} updatePoint={ this.updatePoint } key={uuidv4()} />
                 ) ) };
                 { centeredCircle }               
             </React.Fragment>
