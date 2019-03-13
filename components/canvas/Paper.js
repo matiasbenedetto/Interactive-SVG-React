@@ -34,8 +34,8 @@ export default class Paper extends React.Component{
             <svg className="paper" onClick={ this.handleClick }>
                 <style jsx>{`
                     .paper {
-                        background-color: transparent;
-                        height: 700px;
+                        background-color: #111122;
+                        height: 100vh;
                         position: relative;
                         width: 100%;
                     }

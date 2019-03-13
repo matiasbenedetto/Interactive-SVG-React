@@ -54,7 +54,7 @@ export default class Parallelogram extends React.Component {
             <React.Fragment>
                 <polygon points={ coords } fill="transparent" stroke="blue" /> 
                 { points.map( point => (
-                    <Circle {...point} />
+                    point.print && <Circle {...point} />
                 ) ) };
                 { centeredCircle }               
             </React.Fragment>

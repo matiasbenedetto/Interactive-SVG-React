@@ -9,7 +9,7 @@ export function addPoint( points, pointToAdd ){
     
     if ( lastGroupLength === 3 ){
         const calculatedCoords = getParallelogramLastPointCoords( newPoints[ points.length -1 ] );
-        newPoints[ points.length -1 ].push( { ...calculatedCoords, size: 11, print: true } );
+        newPoints[ points.length -1 ].push( { ...calculatedCoords, size: 11, print: false } );
         lastGroupLength ++;
     }else if ( lastGroupLength === 4 ) {
         newPoints.push( [ pointToAdd ] );
