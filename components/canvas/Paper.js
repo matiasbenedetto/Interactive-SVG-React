@@ -1,4 +1,5 @@
 import Circle from '../shapes/Circle';
+import { addPoint } from '../../utils/utils';
 
 export default class Paper extends React.Component{
 
@@ -10,29 +11,8 @@ export default class Paper extends React.Component{
         this.handleClick = this.handleClick.bind( this );
     }
 
-    addPoint( points, pointToAdd ){
-        let newPoints = points.slice();
-        let lastGroupLength = newPoints[ points.length -1 ].length;
-
-        if ( lastGroupLength < 3 ){
-            newPoints[ points.length -1 ].push( pointToAdd );
-            lastGroupLength ++;
-        }
-        
-        if ( lastGroupLength === 3 ){
-            newPoints[ points.length -1 ].push( { x: 10, y: 10, size: 11, print: false } );
-            lastGroupLength ++;
-        }
-        
-        if ( lastGroupLength === 4 ) {
-            newPoints.push( [ pointToAdd ] );
-        }
-
-        return newPoints
-    }
-
     handleClick( event ){
-        const newPoints = this.addPoint(
+        const newPoints = addPoint(
             this.state.points,
             {
                 x: event.pageX,
