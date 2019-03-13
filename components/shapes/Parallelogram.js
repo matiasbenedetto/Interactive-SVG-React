@@ -22,7 +22,9 @@ export default class Parallelogram extends React.Component {
             const center = this.getCenter( points );
             const area = this.getArea( points );
             const radius = getRadiusFromArea( area );
-            return ( <Circle { ...center } fill="transparent" stroke="yellow" size={ radius } stroke-width="3" /> );
+            const x = center.x + radius / 2;
+            const y = center.y + radius / 2;
+            return ( <Circle x={ x } y={ y }  fill="transparent" stroke="yellow" size={ radius } stroke-width="3" /> );
         }
         return null;
     }
