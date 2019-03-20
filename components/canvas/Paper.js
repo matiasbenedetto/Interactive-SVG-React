@@ -1,5 +1,5 @@
 import Parallelogram from '../shapes/Parallelogram';
-import { addPoint } from '../../utils/utils';
+import { addPoint, getParallelogramLastPointCoords } from '../../utils/utils';
 
 export default class Paper extends React.Component{
 
@@ -63,15 +63,25 @@ export default class Paper extends React.Component{
     
     updatePoint( lastPoint, updatedPoint ){
         let newPoints = this.state.points;
-        newPoints.forEach( polygon => {
-            polygon.forEach( point => {
+        let pointFound = false;
+        for ( let polygon of newPoints )  {
+            for ( let point of polygon ) {
                 if ( point.x === lastPoint.x  &&  point.y === lastPoint.y ){
                     point.x = updatedPoint.x;
                     point.y = updatedPoint.y;
+                    pointFound = true;
+                    break;
                 }
-            } )
-        } );
-        
+            }
+            if ( polygon.length === 4 ){
+                const calculatedPoint = getParallelogramLastPointCoords( polygon );
+                polygon[3].x = calculatedPoint.x;
+                polygon[3].y = calculatedPoint.y;
+            }
+            if ( pointFound ){
+                break;
+            }
+        };
         this.setState({
             points: newPoints 
         })

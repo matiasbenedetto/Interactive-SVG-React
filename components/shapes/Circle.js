@@ -12,7 +12,7 @@ export default class Circle extends React.Component{
     }
     
     render(){
-        let { x, y, size, fill } = this.props;
+        let { x, y, size, fill, stroke } = this.props;
         x = x - size / 2;
         y = y - size / 2;
         return(
@@ -20,7 +20,8 @@ export default class Circle extends React.Component{
                 cx={ x }
                 cy={ y }
                 r={ size }
-                { ...this.props }
+                fill={ fill }
+                stroke={ stroke }
                 className="circle"
                 onMouseDown={ this.handleMouseDown }
             >
