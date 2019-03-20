@@ -27,7 +27,7 @@ export default class Parallelogram extends React.Component {
             const radius = getRadiusFromArea( area );
             const x = center.x + radius / 2;
             const y = center.y + radius / 2;
-            return ( <Circle x={ x } y={ y }  fill="transparent" stroke="yellow" size={ radius } stroke-width="3" /> );
+            return ( <Circle x={ x } y={ y }  fill="transparent" stroke="yellow" size={ radius } stroke-width="3" draggable={ false } /> );
         }
         return null;
     }
@@ -57,6 +57,7 @@ export default class Parallelogram extends React.Component {
                             key={ i }
                             toggleIsDraggingPoint={ this.props.toggleIsDraggingPoint }
                             updateLastSelectedPoint={ this.props.updateLastSelectedPoint }
+                            draggable={ true }
                         />
                 ) ) };
                 { centeredCircle }               

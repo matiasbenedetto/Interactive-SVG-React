@@ -12,7 +12,7 @@ export default class Circle extends React.Component{
     }
     
     render(){
-        let { x, y, size, fill, stroke } = this.props;
+        let { x, y, size, fill, stroke, draggable } = this.props;
         x = x - size / 2;
         y = y - size / 2;
         return(
@@ -23,7 +23,7 @@ export default class Circle extends React.Component{
                 fill={ fill }
                 stroke={ stroke }
                 className="circle"
-                onMouseDown={ this.handleMouseDown }
+                onMouseDown={ draggable ? this.handleMouseDown : () => {} }
             >
                 <style jsx>{`
                     .circle {
