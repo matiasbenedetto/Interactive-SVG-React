@@ -7,11 +7,14 @@ export default class Paper extends React.Component{
         super(props);
         this.state = {
             points: [[]],
-            isDraggingPoint: false
+            isDraggingPoint: false,
+            lastSelectedPoint: {}
         };
         this.handleClick = this.handleClick.bind( this );
         this.handleMouseMove = this.handleMouseMove.bind( this );
         this.toggleIsDraggingPoint = this.toggleIsDraggingPoint.bind( this );
+        this.updateLastSelectedPoint = this.updateLastSelectedPoint.bind( this );
+        this.updatePoint = this.updatePoint.bind( this );
     }
 
     handleClick( event ){
@@ -37,18 +40,43 @@ export default class Paper extends React.Component{
     }
 
     handleMouseMove( event ){
-        this.setState({
-            mouseX: event.clientX,
-            mouseY: event.clientY
-        });
+        const { isDraggingPoint, lastSelectedPoint } = this.state;
+        if ( isDraggingPoint ){
+            const x= event.pageX;;
+            const y= event.pageY;
+            this.updatePoint( lastSelectedPoint, { x, y } );
+            this.updateLastSelectedPoint( x, y );
+        }
     }
 
     toggleIsDraggingPoint(){
-        console.log("toggleIsDraggingPoint");
         this.setState({
             isDraggingPoint: true
         })
     }
+
+    updateLastSelectedPoint( x, y ){
+        this.setState({
+            lastSelectedPoint: { x, y }
+        })
+    }
+    
+    updatePoint( lastPoint, updatedPoint ){
+        let newPoints = this.state.points;
+        newPoints.forEach( polygon => {
+            polygon.forEach( point => {
+                if ( point.x === lastPoint.x  &&  point.y === lastPoint.y ){
+                    point.x = updatedPoint.x;
+                    point.y = updatedPoint.y;
+                }
+            } )
+        } );
+        
+        this.setState({
+            points: newPoints 
+        })
+    }
+        
 
     render(){
         const { points, mouseX, mouseY } = this.state;
@@ -56,7 +84,7 @@ export default class Paper extends React.Component{
             <div
                 className="paper"
                 onClick={ this.handleClick }
-                onDrag={ this.handleDrag }
+                onMouseMove={ this.handleMouseMove }
             >
                 <style jsx>
                     {`
@@ -80,7 +108,9 @@ export default class Paper extends React.Component{
                             mouseX={ mouseX }
                             mouseY={ mouseY }
                             toggleIsDraggingPoint={ this.toggleIsDraggingPoint }
-                            />
+                            updatePoint={ this.updatePoint }
+                            updateLastSelectedPoint={ this.updateLastSelectedPoint }
+                        />
                     ) ) }                
                 </svg>
             </div>

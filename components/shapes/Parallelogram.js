@@ -4,7 +4,6 @@ import { getRadiusFromArea } from '../../utils/utils';
 export default class Parallelogram extends React.Component {
     constructor(props) {
         super(props);
-        this.updatePoint = this.updatePoint.bind( this );
     }
 
     getPolygonCoordsString( points ){
@@ -43,22 +42,6 @@ export default class Parallelogram extends React.Component {
         }
     }
 
-    updatePoint( lastPoint, newPoint ){
-        const newPoints = this.state.points.map( point => {
-            if ( point.x === lastPoint.x  &&  point.y === lastPoint.y ){
-                point.x = newPoint.x;
-                point.y = newPoint.y;
-            } 
-            return point;
-        } );
-
-        console.log( "newPoints: ", newPoints );
-
-        this.setState({
-            points: newPoints 
-        })
-    }    
-
     render(){
         const { points, mouseX, mouseY } = this.props;
         const coords = this.getPolygonCoordsString( points );
@@ -75,6 +58,7 @@ export default class Parallelogram extends React.Component {
                             mouseX={ mouseX }
                             mouseY={ mouseY }
                             toggleIsDraggingPoint={ this.props.toggleIsDraggingPoint }
+                            updateLastSelectedPoint={ this.props.updateLastSelectedPoint }
                         />
                 ) ) };
                 { centeredCircle }               

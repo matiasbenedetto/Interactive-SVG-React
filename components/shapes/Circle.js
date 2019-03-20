@@ -10,9 +10,11 @@ export default class Circle extends React.Component{
     }
 
     handleMouseDown(event){
-        this.props.toggleIsDraggingPoint();
-    }    
-
+        const { toggleIsDraggingPoint, x, y, updateLastSelectedPoint } = this.props;
+        toggleIsDraggingPoint();
+        updateLastSelectedPoint( x, y );
+    }
+    
     render(){
         let { x, y } = this.props;
         const { size, fill } = this.state;
