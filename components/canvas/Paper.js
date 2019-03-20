@@ -1,7 +1,5 @@
-import Circle from '../shapes/Circle';
 import Parallelogram from '../shapes/Parallelogram';
 import { addPoint } from '../../utils/utils';
-import uuidv4 from  'uuid/v4';
 
 export default class Paper extends React.Component{
 
@@ -37,22 +35,39 @@ export default class Paper extends React.Component{
         });
     }
 
+    handleDrag( event ){
+        console.log("dragging");
+    }
+
     render(){
         const { points, mouseX, mouseY } = this.state;
         return(
-            <svg className="paper" onClick={ this.handleClick } onMouseMove={ this.handleMouseMove } >
-                <style jsx>{`
-                    .paper {
-                        background-color: #111122;
-                        height: 100vh;
-                        position: relative;
-                        width: 100%;
-                    }
-                `}</style>
-                { points.map( group => (
-                    <Parallelogram points={ group } key={uuidv4()} mouseX={ mouseX } mouseY={ mouseY } />
-                ) ) }                
-            </svg>
+            <div
+                className="paper"
+                onClick={ this.handleClick }
+                onDrag={ this.handleDrag }
+                
+            >
+                <style jsx>
+                    {`
+                        .paper {
+                            background-color: #111122;
+                            height: 100vh;
+                            width: 100%;
+                            display:flex;
+                        }
+                        .paper svg{
+                            width: 100%;
+                        }
+
+                    `}
+                </style>
+                <svg>
+                    { points.map( ( group, i ) => (
+                        <Parallelogram points={ group } key={ i } mouseX={ mouseX } mouseY={ mouseY } />
+                    ) ) }                
+                </svg>
+            </div>
         )
     }
 }

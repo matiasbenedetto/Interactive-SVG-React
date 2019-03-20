@@ -26,7 +26,6 @@
   "dependencies": {
     "next": "^8.0.3",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "uuidv4": "^3.0.1"
+    "react-dom": "^16.8.4"
   }
 }

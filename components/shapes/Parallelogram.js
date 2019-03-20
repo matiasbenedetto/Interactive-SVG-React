@@ -1,13 +1,9 @@
 import Circle from './Circle';
 import { getRadiusFromArea } from '../../utils/utils';
-import uuidv4 from  'uuid/v4';
 
 export default class Parallelogram extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            points: this.props.points
-        }
         this.updatePoint = this.updatePoint.bind( this );
     }
 
@@ -64,15 +60,14 @@ export default class Parallelogram extends React.Component {
     }    
 
     render(){
-        const { mouseX, mouseY } = this.props;
-        const { points } = this.state;
+        const { points, mouseX, mouseY } = this.props;
         const coords = this.getPolygonCoordsString( points );
         const centeredCircle = this.getCenteredCircle( points );
         return(
             <React.Fragment>
                 <polygon points={ coords } fill="transparent" stroke="blue" /> 
-                { points.map( point => (
-                    point.print && <Circle {...point} updatePoint={ this.updatePoint } key={uuidv4()} mouseX={ mouseX } mouseY={ mouseY } />
+                { points.map( ( point, i )  => (
+                    point.print && <Circle { ...point } updatePoint={ this.updatePoint } key={ i } mouseX={ mouseX } mouseY={ mouseY } />
                 ) ) };
                 { centeredCircle }               
             </React.Fragment>

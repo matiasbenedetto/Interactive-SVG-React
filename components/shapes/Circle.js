@@ -3,8 +3,6 @@ export default class Circle extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            x: this.props.x,
-            y: this.props.y,
             size: this.props.size,
             fill: this.props.fill,
             isDragging: false
@@ -46,7 +44,8 @@ export default class Circle extends React.Component{
     
 
     render(){
-        let { x, y, size, fill, isDragging } = this.state;
+        let { x, y } = this.props;
+        const { size, fill, isDragging } = this.state;
         x = x - size / 2;
         y = y - size / 2;
         return(
@@ -56,11 +55,8 @@ export default class Circle extends React.Component{
                 r={ size }
                 { ...this.props }
                 draggable="true"
-                onClick={ this.handleClick }
-                onMouseDown={ this.handleMouseDown }
-                onMouseUp={ this.handleMouseUp }
-                onMouseMove={ this.handleMouseMove }
                 className="circle"
+                draggable="true"
             >
                 <style jsx>{`
                     .circle {
