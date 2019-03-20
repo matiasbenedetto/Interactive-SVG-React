@@ -15,6 +15,7 @@ export default class Paper extends React.Component{
         this.toggleIsDraggingPoint = this.toggleIsDraggingPoint.bind( this );
         this.updateLastSelectedPoint = this.updateLastSelectedPoint.bind( this );
         this.updatePoint = this.updatePoint.bind( this );
+        this.erasePaper = this.erasePaper.bind( this );
     }
 
     handleClick( event ){
@@ -86,6 +87,13 @@ export default class Paper extends React.Component{
             points: newPoints 
         })
     }
+
+    erasePaper( event ){
+        event.stopPropagation();
+        if ( window.confirm( 'Really you want to erase your draw?' ) ){
+            this.setState( { points: [[]] } );
+        }
+    }
         
 
     render(){
@@ -123,6 +131,9 @@ export default class Paper extends React.Component{
                         />
                     ) ) }                
                 </svg>
+                <div className="controls">
+                        <button onClick={ this.erasePaper }>Erase Content</button>
+                </div>
             </div>
         )
     }
