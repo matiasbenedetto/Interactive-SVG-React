@@ -67,7 +67,15 @@ export default class Parallelogram extends React.Component {
             <React.Fragment>
                 <polygon points={ coords } fill="transparent" stroke="blue" /> 
                 { points.map( ( point, i )  => (
-                    point.print && <Circle { ...point } updatePoint={ this.updatePoint } key={ i } mouseX={ mouseX } mouseY={ mouseY } />
+                    point.print &&
+                        <Circle
+                            { ...point }
+                            updatePoint={ this.updatePoint }
+                            key={ i }
+                            mouseX={ mouseX }
+                            mouseY={ mouseY }
+                            toggleIsDraggingPoint={ this.props.toggleIsDraggingPoint }
+                        />
                 ) ) };
                 { centeredCircle }               
             </React.Fragment>

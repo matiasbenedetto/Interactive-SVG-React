@@ -6,26 +6,34 @@ export default class Paper extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            points: [[]]
+            points: [[]],
+            isDraggingPoint: false
         };
         this.handleClick = this.handleClick.bind( this );
         this.handleMouseMove = this.handleMouseMove.bind( this );
+        this.toggleIsDraggingPoint = this.toggleIsDraggingPoint.bind( this );
     }
 
     handleClick( event ){
-        const newPoints = addPoint(
-            this.state.points,
-            {
-                x: event.pageX,
-                y: event.pageY,
-                size: 11,
-                fill: "red",
-                print: true 
-            }
-        );
-        this.setState({
-            points: newPoints
-        });
+        if ( !this.state.isDraggingPoint ){
+            const newPoints = addPoint(
+                this.state.points,
+                {
+                    x: event.pageX,
+                    y: event.pageY,
+                    size: 11,
+                    fill: "red",
+                    print: true 
+                }
+            );
+            this.setState({
+                points: newPoints
+            });
+        }else{
+            this.setState({
+                isDraggingPoint: false
+            })
+        }
     }
 
     handleMouseMove( event ){
@@ -35,8 +43,11 @@ export default class Paper extends React.Component{
         });
     }
 
-    handleDrag( event ){
-        console.log("dragging");
+    toggleIsDraggingPoint(){
+        console.log("toggleIsDraggingPoint");
+        this.setState({
+            isDraggingPoint: true
+        })
     }
 
     render(){
@@ -46,7 +57,6 @@ export default class Paper extends React.Component{
                 className="paper"
                 onClick={ this.handleClick }
                 onDrag={ this.handleDrag }
-                
             >
                 <style jsx>
                     {`
@@ -64,7 +74,13 @@ export default class Paper extends React.Component{
                 </style>
                 <svg>
                     { points.map( ( group, i ) => (
-                        <Parallelogram points={ group } key={ i } mouseX={ mouseX } mouseY={ mouseY } />
+                        <Parallelogram
+                            points={ group }
+                            key={ i }
+                            mouseX={ mouseX }
+                            mouseY={ mouseY }
+                            toggleIsDraggingPoint={ this.toggleIsDraggingPoint }
+                            />
                     ) ) }                
                 </svg>
             </div>
