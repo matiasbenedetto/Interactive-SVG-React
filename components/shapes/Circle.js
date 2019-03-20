@@ -2,10 +2,6 @@ export default class Circle extends React.Component{
 
     constructor(props) {
         super(props);
-        this.state = {
-            size: this.props.size,
-            fill: this.props.fill,
-        }
         this.handleMouseDown = this.handleMouseDown.bind( this );
     }
 
@@ -16,8 +12,7 @@ export default class Circle extends React.Component{
     }
     
     render(){
-        let { x, y } = this.props;
-        const { size, fill } = this.state;
+        let { x, y, size, fill } = this.props;
         x = x - size / 2;
         y = y - size / 2;
         return(

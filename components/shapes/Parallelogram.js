@@ -43,7 +43,7 @@ export default class Parallelogram extends React.Component {
     }
 
     render(){
-        const { points, mouseX, mouseY } = this.props;
+        const { points } = this.props;
         const coords = this.getPolygonCoordsString( points );
         const centeredCircle = this.getCenteredCircle( points );
         return(
@@ -55,8 +55,6 @@ export default class Parallelogram extends React.Component {
                             { ...point }
                             updatePoint={ this.updatePoint }
                             key={ i }
-                            mouseX={ mouseX }
-                            mouseY={ mouseY }
                             toggleIsDraggingPoint={ this.props.toggleIsDraggingPoint }
                             updateLastSelectedPoint={ this.props.updateLastSelectedPoint }
                         />
