@@ -12,9 +12,11 @@ export default class Circle extends React.Component{
     }
     
     render(){
-        let { x, y, size, fill, stroke, draggable } = this.props;
-        x = x - size / 2;
-        y = y - size / 2;
+        let { x, y, size, fill, stroke, draggable, centered } = this.props;
+        if ( centered ){
+            x = x - size / 2;
+            y = y - size / 2;
+        }
         return(
             <circle
                 cx={ x }
