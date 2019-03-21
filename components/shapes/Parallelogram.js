@@ -20,10 +20,9 @@ export default class Parallelogram extends React.Component {
         return { x, y }
     }
 
-    getCenteredCircle ( points ){
+    getCenteredCircle ( points, area ){
         if ( points.length === 4 ){ 
             const center = this.getCenter( points );
-            const area = this.getArea( points );
             const radius = getRadiusFromArea( area );
             const x = center.x + radius / 2;
             const y = center.y + radius / 2;
@@ -45,21 +44,33 @@ export default class Parallelogram extends React.Component {
     render(){
         const { points, toggleIsDraggingPoint, updateLastSelectedPoint } = this.props;
         const coords = this.getPolygonCoordsString( points );
-        const centeredCircle = this.getCenteredCircle( points );
+        const area = this.getArea( points );
+        const centeredCircle = this.getCenteredCircle( points, area );
         return(
             <React.Fragment>
+                <style jsx>{`
+                    text{
+                        font-family: Sans-Serif;
+                        font-size: 10px;
+                    }
+                `}</style>
                 <polygon points={ coords } fill="transparent" stroke="blue" /> 
                 { points.map( ( point, i )  => (
                     point.print &&
-                        <Circle
-                            { ...point }
-                            updatePoint={ this.updatePoint }
-                            key={ i }
-                            toggleIsDraggingPoint={ toggleIsDraggingPoint }
-                            updateLastSelectedPoint={ updateLastSelectedPoint }
-                            draggable={ true }
-                        />
+                        <React.Fragment key={ i }>
+                            <Circle
+                                { ...point }
+                                updatePoint={ this.updatePoint }
+                                toggleIsDraggingPoint={ toggleIsDraggingPoint }
+                                updateLastSelectedPoint={ updateLastSelectedPoint }
+                                draggable={ true }
+                            />
+                            { ( i === 0 && points.length === 4 )  &&
+                                <text x={ point.x } y={ point.y } fill="blue" transform={ `translate( -10, -20 )`} >Area: { area }</text>
+                            }
+                        </React.Fragment>
                 ) ) };
+                
                 { centeredCircle }               
             </React.Fragment>
         )

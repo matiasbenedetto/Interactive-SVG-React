@@ -18,21 +18,27 @@ export default class Circle extends React.Component{
             y = y - size / 2;
         }
         return(
-            <circle
-                cx={ x }
-                cy={ y }
-                r={ size }
-                fill={ fill }
-                stroke={ stroke }
-                className="circle"
-                onMouseDown={ draggable ? this.handleMouseDown : () => {} }
-            >
+            <React.Fragment>
                 <style jsx>{`
-                    .circle {
-                        cursor: pointer;
-                    }
+                        .circle {
+                            cursor: pointer;
+                        }
+                        text{
+                            font-family: Sans-Serif;
+                            font-size: 10px;
+                        }
                 `}</style>
-            </circle>
+                <circle
+                    cx={ x }
+                    cy={ y }
+                    r={ size }
+                    fill={ fill }
+                    stroke={ stroke }
+                    className="circle"
+                    onMouseDown={ draggable ? this.handleMouseDown : () => {} }
+                />
+                <text x={ x } y={ y } fill={ fill } transform={ `translate( ${ size + 10 } )` }>{ `x:${~~x}, y:${~~y} ` }</text>
+            </React.Fragment>
         )
     }
 }
