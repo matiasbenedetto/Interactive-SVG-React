@@ -1,9 +1,8 @@
-import Paper from '../components/canvas/Paper';
-import Circle from '../components/shapes/Circle';
+import Paper from '../components/canvas/Paper'
 
-export default class Index extends React.Component{
-  render(){
-    return(
+export default class Index extends React.Component {
+  render () {
+    return (
       <div>
         <style jsx global>{`
             body{
@@ -42,13 +41,12 @@ export default class Index extends React.Component{
             }
         `}</style>
         <header>
-            <h1>Shapes</h1>
-            <h2>A React test app made by <b>Matias Benedetto</b></h2>
-            <button>About</button>
+          <h1>Shapes</h1>
+          <h2>A React test app made by <b>Matias Benedetto</b></h2>
+          <button>About</button>
         </header>
-        <div className="draw">
-          <Paper>
-          </Paper> 
+        <div className='draw'>
+          <Paper />
         </div>
       </div>
     )
