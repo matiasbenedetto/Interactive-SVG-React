@@ -115,7 +115,24 @@ export default class Paper extends React.Component{
                         .paper svg{
                             width: 100%;
                         }
-
+                        .controls{
+                            position: absolute;
+                            bottom:15px;
+                            margin-left: auto;
+                            margin-right: auto;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+                        .controls button{
+                            background: transparent;
+                            white-space: nowrap;
+                            border: 2px solid cyan;
+                            color: cyan;
+                            border-radius: 15px;
+                            outline: none;
+                            padding: 5px 10px;
+                            cursor: pointer;
+                        }
                     `}
                 </style>
                 <svg>
