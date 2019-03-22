@@ -5,9 +5,13 @@ export default class Circle extends React.Component {
   }
 
   handleMouseDown (event) {
-    const { toggleIsDraggingPoint, x, y, updateLastSelectedPoint } = this.props
-    toggleIsDraggingPoint()
-    updateLastSelectedPoint(x, y)
+    const { draggable, toggleIsDraggingPoint, x, y, updateLastSelectedPoint } = this.props
+    if ( draggable ){
+      toggleIsDraggingPoint()
+      updateLastSelectedPoint(x, y)
+    }else{
+      event.preventDefault();
+    }
   }
 
   render () {
@@ -20,11 +24,14 @@ export default class Circle extends React.Component {
       <React.Fragment>
         <style jsx>{`
                         .circle {
-                            cursor: pointer;
+                            cursor: ${ draggable ? "grab" : "auto" };
+                            pointer-events: ${ draggable ? "auto" : "none" };
                         }
                         text{
                             font-family: Sans-Serif;
                             font-size: 10px;
+                            pointer-events: none;
+                            user-select: none;
                         }
                 `}</style>
         <circle
@@ -34,7 +41,8 @@ export default class Circle extends React.Component {
           fill={fill}
           stroke={stroke}
           className='circle'
-          onMouseDown={draggable ? this.handleMouseDown : () => {}}
+          onMouseDown={ this.handleMouseDown }
+          z-index={draggable ? "3" : "0"}
         />
         <text x={x} y={y} fill={fill} transform={`translate( ${size + 10} )`}>{ `x:${~~x}, y:${~~y} ` }</text>
       </React.Fragment>

@@ -58,6 +58,7 @@ export default class Parallelogram extends React.Component {
                     text{
                         font-family: Sans-Serif;
                         font-size: 10px;
+                        user-select: none;
                     }
                 `}</style>
         <polygon points={coords} fill='transparent' stroke='blue' />
