@@ -27,11 +27,17 @@ export default class Parallelogram extends React.Component {
     return null
   }
 
+  getDistance (point1, point2) {
+    const a = point1.x - point2.x
+    const b = point1.y - point2.y
+    return Math.sqrt(a * a + b * b)
+  }
+
   getArea (points) {
     if (points.length === 4) {
-      const b = Math.abs(points[0].x - points[2].x)
-      const h = Math.abs(points[0].y - points[2].y)
-      return b * h
+      const b = this.getDistance(points[0], points[1])
+      const h = this.getDistance(points[1], points[2])
+      return ~~(b * h)
     } else {
       return undefined
     }
