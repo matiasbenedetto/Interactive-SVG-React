@@ -55,6 +55,9 @@ export default class Parallelogram extends React.Component {
     return (
       <React.Fragment>
         <style jsx>{`
+                    polygon{
+                        pointer-events: none;
+                    }
                     text{
                         font-family: Sans-Serif;
                         font-size: 10px;
