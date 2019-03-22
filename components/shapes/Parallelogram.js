@@ -1,5 +1,4 @@
 import Circle from './Circle'
-import { getRadiusFromArea } from '../../utils/utils'
 
 export default class Parallelogram extends React.Component {
   getPolygonCoordsString (points) {
@@ -19,7 +18,7 @@ export default class Parallelogram extends React.Component {
   getCenteredCircle (points, area) {
     if (points.length === 4) {
       const center = this.getCenter(points)
-      const radius = getRadiusFromArea(area)
+      const radius = this.getRadiusFromArea(area)
       const x = center.x + radius / 2
       const y = center.y + radius / 2
       return (<Circle x={x} y={y} fill='transparent' stroke='yellow' size={radius} stroke-width='3' draggable={false} centered />)
@@ -41,6 +40,11 @@ export default class Parallelogram extends React.Component {
     } else {
       return undefined
     }
+  }
+
+  getRadiusFromArea (area) {
+    const radius = Math.sqrt(area / Math.PI)
+    return radius
   }
 
   render () {
