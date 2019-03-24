@@ -4,11 +4,11 @@
   "description": "JS assignment",
   "main": "app.js",
   "scripts": {
-    "test": "test",
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "standard --fix"
+    "lint": "standard --fix",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -28,5 +28,8 @@
     "next": "^8.0.3",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
+  },
+  "devDependencies": {
+    "jest": "^24.5.0"
   }
 }
