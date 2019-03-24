@@ -5,10 +5,10 @@ export default class Circle extends React.Component {
   }
 
   handleMouseDown (event) {
-    const { draggable, toggleIsDraggingPoint, x, y, updateLastSelectedPoint } = this.props
+    const { id, parentId, draggable, toggleIsDraggingPoint, updateLastSelectedPoint } = this.props
     if ( draggable ){
       toggleIsDraggingPoint()
-      updateLastSelectedPoint(x, y)
+      updateLastSelectedPoint(id, parentId)
     }else{
       event.preventDefault();
     }

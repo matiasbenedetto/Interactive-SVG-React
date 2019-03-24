@@ -70,7 +70,6 @@ export default class Paper extends React.Component {
       const x = event.pageX
       const y = event.pageY
       this.updatePoint(lastSelectedPoint, { x, y })
-      this.updateLastSelectedPoint(x, y)
     }
   }
 
@@ -80,33 +79,22 @@ export default class Paper extends React.Component {
     })
   }
 
-  updateLastSelectedPoint (x, y) {
+  updateLastSelectedPoint (id, parentId) {
     this.setState({
-      lastSelectedPoint: { x, y }
+      lastSelectedPoint: { id, parentId }
     })
   }
 
-  updatePoint (lastPoint, updatedPoint) {
+  updatePoint (ids, newCoords) {
+    const {id, parentId} = ids
     let newPoints = this.state.points
-    let pointFound = false
-    for (let polygon of newPoints) {
-      for (let point of polygon) {
-        if (point.x === lastPoint.x && point.y === lastPoint.y) {
-          point.x = updatedPoint.x
-          point.y = updatedPoint.y
-          pointFound = true
-          break
-        }
-      }
-      if (polygon.length === 4) {
-        const calculatedPoint = this.getParallelogramLastPointCoords(polygon)
-        polygon[3].x = calculatedPoint.x
-        polygon[3].y = calculatedPoint.y
-      }
-      if (pointFound) {
-        break
-      }
-    };
+    newPoints[parentId][id].x = newCoords.x
+    newPoints[parentId][id].y = newCoords.y
+    if (newPoints[parentId].length === 4) {
+      const calculatedPoint = this.getParallelogramLastPointCoords(newPoints[parentId])
+      newPoints[parentId][3].x = calculatedPoint.x
+      newPoints[parentId][3].y = calculatedPoint.y
+    }
     this.setState({
       points: newPoints
     })
@@ -163,6 +151,7 @@ export default class Paper extends React.Component {
             <Parallelogram
               points={group}
               key={i}
+              id={i}
               mouseX={mouseX}
               mouseY={mouseY}
               toggleIsDraggingPoint={this.toggleIsDraggingPoint}
