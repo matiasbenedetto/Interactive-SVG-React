@@ -117,8 +117,7 @@ export default class Paper extends React.Component {
       >
         <style jsx>
           {`
-                        .paper {
-                            background-color: #111122;
+                        .paper {                            
                             height: 100vh;
                             width: 100%;
                             display:flex;
