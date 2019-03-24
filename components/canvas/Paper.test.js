@@ -76,3 +76,34 @@ describe ('Add points in paper to create a parallelogram', () => {
     })
 
 })
+
+describe ('Given 3 points it returns the calculated last point to create a parallelogram', () => {
+    it('receives 3 points as a paremeter and returns the remaining point', () => {
+        const paper = new Paper()
+        const points = [
+            {
+                x:100,
+                y:300,
+                size: 11,
+                fill: 'red',
+                print: true
+            },
+            {
+                x:200,
+                y:400,
+                size: 11,
+                fill: 'red',
+                print: true
+            },
+            {
+                x:300,
+                y:400,
+                size: 11,
+                fill: 'red',
+                print: true
+            }
+        ]
+        const data = paper.getParallelogramLastPointCoords(points)
+        expect(data).toEqual({x:200, y:300})
+    })
+})
