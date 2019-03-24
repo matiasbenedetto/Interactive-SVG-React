@@ -6,11 +6,11 @@ export default class Circle extends React.Component {
 
   handleMouseDown (event) {
     const { id, parentId, draggable, toggleIsDraggingPoint, updateLastSelectedPoint } = this.props
-    if ( draggable ){
+    if (draggable) {
       toggleIsDraggingPoint()
       updateLastSelectedPoint(id, parentId)
-    }else{
-      event.preventDefault();
+    } else {
+      event.preventDefault()
     }
   }
 
@@ -24,8 +24,8 @@ export default class Circle extends React.Component {
       <React.Fragment>
         <style jsx>{`
                         .circle {
-                            cursor: ${ draggable ? "grab" : "auto" };
-                            pointer-events: ${ draggable ? "auto" : "none" };
+                            cursor: ${draggable ? 'grab' : 'auto'};
+                            pointer-events: ${draggable ? 'auto' : 'none'};
                         }
                         text{
                             font-family: Sans-Serif;
@@ -41,8 +41,8 @@ export default class Circle extends React.Component {
           fill={fill}
           stroke={stroke}
           className='circle'
-          onMouseDown={ this.handleMouseDown }
-          z-index={draggable ? "3" : "0"}
+          onMouseDown={this.handleMouseDown}
+          z-index={draggable ? '3' : '0'}
         />
         <text x={x} y={y} fill={fill} transform={`translate( ${size + 10} )`}>{ `x:${~~x}, y:${~~y} ` }</text>
       </React.Fragment>

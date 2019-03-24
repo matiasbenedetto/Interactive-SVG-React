@@ -19,12 +19,12 @@ export default class Paper extends React.Component {
   addPoint (points, pointToAdd) {
     let newPoints = points.slice()
     let lastGroupLength = newPoints[ points.length - 1 ].length
-  
+
     if (lastGroupLength < 3) {
       newPoints[ points.length - 1 ].push(pointToAdd)
       lastGroupLength++
     }
-  
+
     if (lastGroupLength === 3) {
       const calculatedCoords = this.getParallelogramLastPointCoords(newPoints[ points.length - 1 ])
       newPoints[ points.length - 1 ].push({ ...calculatedCoords, size: 11, print: false })
@@ -32,7 +32,7 @@ export default class Paper extends React.Component {
     } else if (lastGroupLength === 4) {
       newPoints.push([ pointToAdd ])
     }
-  
+
     return newPoints
   }
 
@@ -86,7 +86,7 @@ export default class Paper extends React.Component {
   }
 
   updatePoint (ids, newCoords) {
-    const {id, parentId} = ids
+    const { id, parentId } = ids
     let newPoints = this.state.points
     newPoints[parentId][id].x = newCoords.x
     newPoints[parentId][id].y = newCoords.y
