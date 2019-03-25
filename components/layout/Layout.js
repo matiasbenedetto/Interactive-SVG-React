@@ -6,9 +6,9 @@ export default class Layout extends React.Component {
     return (
       <main>
           <style jsx global>{`
-          body{
-            background-color: #111122;
-          }
+              body{
+                background-color: #111122;
+              }
             `}</style>
         {children}
       </main>
