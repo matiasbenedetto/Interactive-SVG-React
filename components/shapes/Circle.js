@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export default class Circle extends React.Component{
+export default class Circle extends React.Component {
   constructor (props) {
     super(props)
     this.handleMouseDown = this.handleMouseDown.bind(this)
@@ -16,7 +16,7 @@ export default class Circle extends React.Component{
     }
   }
 
-  render(){
+  render () {
     let { x, y, size, fill, stroke, draggable, centered } = this.props
     if (centered) {
       x = x - size / 2

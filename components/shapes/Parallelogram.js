@@ -2,7 +2,6 @@ import Circle from './Circle'
 import PropTypes from 'prop-types'
 
 export default class Parallelogram extends React.Component {
-
   getPolygonCoordsString (points) {
     let coordPoints = ''
     points.forEach(point => {
@@ -49,7 +48,7 @@ export default class Parallelogram extends React.Component {
     return radius
   }
 
-  render(){
+  render () {
     const { id, points, toggleIsDraggingPoint, updateLastSelectedPoint } = this.props
     const coords = this.getPolygonCoordsString(points)
     const area = this.getArea(points)
