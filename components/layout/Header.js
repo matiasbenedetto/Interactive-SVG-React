@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
 export default function Header () {
-    return (
-        <header>
-            <style jsx>{`
+  return (
+    <header>
+      <style jsx>{`
                 header{
                 position: absolute;
                 left: 15px;
@@ -35,15 +35,15 @@ export default function Header () {
                 margin-right:10px;
                 }
             `}</style>
-        
-            <h1>Shapes</h1>
-            <h2>A React test app made by <b>Matias Benedetto</b></h2>
-            <Link href="/">
-                <a>App</a>
-            </Link>
-            <Link href="/about">
-                <a>About</a>
-            </Link>
-        </header>
-    )
+
+      <h1>Shapes</h1>
+      <h2>A React test app made by <b>Matias Benedetto</b></h2>
+      <Link href='/'>
+        <a>App</a>
+      </Link>
+      <Link href='/about'>
+        <a>About</a>
+      </Link>
+    </header>
+  )
 }

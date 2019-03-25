@@ -5,7 +5,7 @@ export default class Layout extends React.Component {
     const { children } = this.props
     return (
       <main>
-          <style jsx global>{`
+        <style jsx global>{`
               body{
                 background-color: #111122;
               }

@@ -1,7 +1,7 @@
 import Layout from '../components/layout/Layout'
 import Paper from '../components/canvas/Paper'
 
-export default function index() {
+export default function index () {
   return (
     <Layout>
       <style jsx global>{`

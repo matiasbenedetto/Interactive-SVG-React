@@ -3,7 +3,7 @@ import App, { Container } from 'next/app'
 import Header from '../components/layout/Header'
 
 class ShapesApp extends App {
-  static async getInitialProps({ Component, ctx }) {
+  static async getInitialProps ({ Component, ctx }) {
     let pageProps = {}
 
     if (Component.getInitialProps) {
@@ -13,7 +13,7 @@ class ShapesApp extends App {
     return { pageProps }
   }
 
-  render() {
+  render () {
     const { Component, pageProps } = this.props
 
     return (
