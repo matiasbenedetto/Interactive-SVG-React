@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 export default function Circle (props) {
   function handleMouseDown (event) {
     const { id, parentId, draggable, toggleIsDraggingPoint, updateLastSelectedPoint } = props
@@ -36,9 +38,22 @@ export default function Circle (props) {
         stroke={stroke}
         className='circle'
         onMouseDown={handleMouseDown}
-        z-index={draggable ? '3' : '0'}
       />
       <text x={x} y={y} fill={fill} transform={`translate( ${size + 10} )`}>{ `x:${~~x}, y:${~~y} ` }</text>
     </React.Fragment>
   )
+}
+
+Circle.propTypes = {
+  id: PropTypes.number,
+  parentId: PropTypes.number,
+  draggable: PropTypes.bool,
+  toggleIsDraggingPoint: PropTypes.func,
+  updateLastSelectedPoint: PropTypes.func,
+  x: PropTypes.number,
+  y: PropTypes.number,
+  r: PropTypes.number,
+  fill: PropTypes.string,
+  stroke: PropTypes.string,
+  centered: PropTypes.bool
 }

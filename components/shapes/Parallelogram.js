@@ -1,4 +1,5 @@
 import Circle from './Circle'
+import PropTypes from 'prop-types'
 
 export default function Parallelogram (props) {
   function getPolygonCoordsString (points) {
@@ -84,4 +85,11 @@ export default function Parallelogram (props) {
       { centeredCircle }
     </React.Fragment>
   )
+}
+
+Parallelogram.propTypes = {
+  id: PropTypes.number,
+  points: PropTypes.array,
+  toggleIsDraggingPoint: PropTypes.func,
+  updateLastSelectedPoint: PropTypes.func
 }
