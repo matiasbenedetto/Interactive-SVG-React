@@ -11,13 +11,17 @@ https://shapes-test.matiasbenedetto.now.sh/
 ## Instructions
 
 Install dependencies
-npm install
+
+`npm install`
 
 Run dev mode
-npm run dev
+
+`npm run dev`
 
 Run tests
-npm run test
+
+`npm run test`
 
 Run linter
-npm run lint
+
+`npm run lint`
