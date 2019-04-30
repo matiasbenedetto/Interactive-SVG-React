@@ -1,7 +1,7 @@
 # Shapes
 ### Interactive SVG drawing app for the browser written in React.
 
-![]()
+![screenshot](screenshot.png)
 
 
 A simple React app that lets the user select points on the screen to create and modify parallelograms. As the user clicks on the screen a new point of a polygon is drawn. If the user clicks in an already existing point it can be dragged around, and the parallelogram which the point integrates will react accordingly to the movement of one of its vertex.
